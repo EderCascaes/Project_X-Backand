@@ -26,7 +26,6 @@ namespace Project_X.Sevice.Services
                 if (validaConsulta == false)
                     return default;
 
-
                 var data = DateTime.Parse(consulta.Data.ToString("dd/MM/yyyy 23:00:00-03"));              
 
                 return await _consultaRepositorio.Cadastro(new Consulta(
