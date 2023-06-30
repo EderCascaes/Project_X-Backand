@@ -11,7 +11,6 @@ namespace Project_X.WebAPI.Controllers
     [Route("[Controller]")]
     public class ConsultaController : ApiBaseController
     {
-
         public ConsultaController(IServiceProvider serviceProvider, INotificationsService notification) : base(serviceProvider, notification)
         {
         }
