@@ -1,0 +1,16 @@
+﻿using Project_X.Domain.Dto;
+using Project_X.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Project_X.Interface.Repositories
+{
+    public interface IAutenticacaoRepositorio
+    {
+        Task<UsuarioLogin> Get(UsuarioLogin usuariologin);
+        Task<UsuarioLogin>CriarUsuarioLogin(UsuarioLogin usuariologin);
+    }
+}
