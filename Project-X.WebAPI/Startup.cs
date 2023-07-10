@@ -22,6 +22,7 @@ namespace Project_X.WebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseNpgsql(
@@ -73,7 +74,12 @@ namespace Project_X.WebAPI
                 app.UseSwaggerUI();
             }
 
-            
+             app.UseSwaggerUI(c => c.SwaggerEndpoint("../swagger/v1/swagger.json", "WebApi Projeto X v1") 
+
+                );
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
