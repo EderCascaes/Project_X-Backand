@@ -51,8 +51,10 @@ namespace Project_X.Domain.Static
 
         }
 
-        public static string NumerosCpf(this string cpf) => cpf.Replace(".", "").Replace("-", "").Replace("/", "");
-        
+        public static string RetornaNumeros(this string alvo) => alvo.Replace(".", "").Replace("-", "").Replace("/", "").Replace("(", "").Replace(")", "");
+
+        public static string FormatCPF(string CPF) => Convert.ToUInt64(CPF).ToString(@"000\.000\.000\-00");       
+
 
 
         public static List<int> GetListaFuncoes(this int[] codigos)
@@ -62,6 +64,19 @@ namespace Project_X.Domain.Static
                     listaFuncooes.Add(item);
             
             return listaFuncooes;
+        }
+
+        public static  string AplicarMascaraTelefone(string strNumero)
+        {
+            // por omissão tem 10 ou menos dígitos
+            string strMascara = "{0:(00)0000-0000}";
+            // converter o texto em número
+            long lngNumero = Convert.ToInt64(strNumero);
+
+            if (strNumero.Length == 11)
+                strMascara = "{0:(00)00000-0000}";
+
+            return string.Format(strMascara, lngNumero);
         }
     }
 }

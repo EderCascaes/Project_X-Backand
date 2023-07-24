@@ -27,7 +27,7 @@ namespace Project_X.WebAPI.Controllers
 
         [HttpGet]
         [Route("Obter/{id?}")]
-        public async Task<ActionResult<ReturnAPI<List<Pessoa>>>> Obter(int id)
+        public async Task<ActionResult<ReturnAPI<List<PessoaDto>?>>> Obter(int id)
         {
             return EnviarResposta(await GetService<IPessoaServico>().Obter(id));
 
@@ -35,7 +35,7 @@ namespace Project_X.WebAPI.Controllers
 
         [HttpGet]
         [Route("docOuNome")]
-        public async Task<ActionResult<ReturnAPI<List<Pessoa>>>> ObterPorDocOuNome([FromQuery]string docOuNome)
+        public async Task<ActionResult<ReturnAPI<List<PessoaDto>?>>> ObterPorDocOuNome([FromQuery]string docOuNome)
         {
             return EnviarResposta(await GetService<IPessoaServico>().ObterPorDocOuNome(docOuNome));
 

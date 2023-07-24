@@ -128,7 +128,7 @@ namespace Project_X.Sevice.Services
         {
             try
             {
-                var d = doc.NumerosCpf();
+                var d = doc.RetornaNumeros();
 
                 return await _consultaRepositorio.ObterPorDoc(d);
             }

@@ -13,7 +13,7 @@ namespace Project_X.Interface.Services
         Task<int> Cadastro(PessoaDto dto);
         Task<int> Editar(PessoaDto dto);
         Task<int> Excluir(int id);
-        Task<List<Pessoa>> Obter(int id = 0);
-        Task<List<Pessoa>> ObterPorDocOuNome(string docOuNome);
+        Task<List<PessoaDto>> Obter(int id = 0);
+        Task<List<PessoaDto>> ObterPorDocOuNome(string docOuNome);
     }
 }

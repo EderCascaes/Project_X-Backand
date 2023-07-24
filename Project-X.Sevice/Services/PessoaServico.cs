@@ -30,9 +30,9 @@ namespace Project_X.Sevice.Services
                     return await _pessoaRepositorio.Cadastro(new Pessoa(
                          dto.Nome,
                          dto.Email,
-                         dto.Telefone,
-                         dto.DataNascimento,
-                         dto.Cpf.NumerosCpf(),
+                         dto.Telefone.RetornaNumeros(),
+                         DateTime.Parse(dto.DataNascimento),
+                         dto.Cpf.RetornaNumeros(),
                          dto.IdEndereco,
                          dto.Funcao
                 ));
@@ -65,8 +65,8 @@ namespace Project_X.Sevice.Services
                          dto.Nome,
                          dto.Email,
                          dto.Telefone,
-                         dto.DataNascimento,
-                         dto.Cpf.NumerosCpf(),
+                         DateTime.Parse(dto.DataNascimento),
+                         dto.Cpf.RetornaNumeros(),
                          dto.IdEndereco,
                          dto.Funcao,
                          dto.Id
@@ -92,11 +92,31 @@ namespace Project_X.Sevice.Services
             }
         }
 
-        public Task<List<Pessoa>> Obter(int id = 0)
+        public async Task<List<PessoaDto>> Obter(int id = 0)
         {
             try
             {
-                return _pessoaRepositorio.Obter(id);
+                var listaPessoaDto = new List<PessoaDto>();
+                var listaPessoa = await _pessoaRepositorio.Obter(id);
+
+                if(listaPessoa.Count > 0)
+                    foreach (var pessoa in listaPessoa)
+                    {
+                        var p = new PessoaDto(
+                              pessoa.Id,
+                              pessoa.Nome,
+                              pessoa.Email,
+                              pessoa.Telefone,
+                              pessoa.DataNascimento,
+                              pessoa.Cpf,
+                              pessoa.IdEndereco,
+                              pessoa.Funcao
+                            );
+
+                        listaPessoaDto.Add( p );
+                    }
+
+                return listaPessoaDto;
             }
             catch (Exception ex)
             {
@@ -105,11 +125,32 @@ namespace Project_X.Sevice.Services
             }
         }
         
-        public Task<List<Pessoa>> ObterPorDocOuNome(string docOuNome)
+        public async Task<List<PessoaDto>> ObterPorDocOuNome(string docOuNome)
         {
             try
             {
-                return _pessoaRepositorio.ObterDocOuNome(docOuNome);
+                var listaPessoaDto = new List<PessoaDto>();
+                var listaPessoa = await _pessoaRepositorio.ObterDocOuNome(docOuNome);
+
+                if (listaPessoa.Count > 0)
+                    foreach (var pessoa in listaPessoa)
+                    {
+                        var p = new PessoaDto(
+                              pessoa.Id,
+                              pessoa.Nome,
+                              pessoa.Email,
+                              pessoa.Telefone,
+                              pessoa.DataNascimento,
+                              pessoa.Cpf,
+                              pessoa.IdEndereco,
+                              pessoa.Funcao
+                            );
+
+                        listaPessoaDto.Add(p);
+                    }
+
+                return listaPessoaDto;
+
             }
             catch (Exception ex)
             {
