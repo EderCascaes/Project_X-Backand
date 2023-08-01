@@ -14,5 +14,6 @@ namespace Project_X.Interface.Services
         Task<int> Editar(EnderecoDto dto);
         Task<int> Excluir(int id);
         Task<List<Endereco>> Obter(int id = 0);
+        Task<EnderecoDto> ObterEnderecoPorCep(string cep);
     }
 }

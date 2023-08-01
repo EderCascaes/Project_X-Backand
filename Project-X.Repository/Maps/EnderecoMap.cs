@@ -17,6 +17,7 @@ namespace Project_X.Repository.Maps
             builder.Property(x => x.Logradouro).HasColumnName("logradouro").HasMaxLength(100).IsRequired();
             builder.Property(x => x.Numero).HasColumnName("numero").HasMaxLength(8).IsRequired();
             builder.Property(x => x.Complemento).HasColumnName("complemento").HasMaxLength(100);
+            builder.Property(x => x.Bairro).HasColumnName("bairro").HasMaxLength(50);
             builder.Property(x => x.CEP).HasColumnName("cep").HasMaxLength(9).IsRequired();
 
             builder.HasOne(x => x.Pessoa).WithOne(x => x.Endereco).HasForeignKey<Pessoa>(x => x.IdEndereco);

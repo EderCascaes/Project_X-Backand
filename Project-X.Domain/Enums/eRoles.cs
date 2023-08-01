@@ -6,7 +6,7 @@ namespace Project_X.Domain.Enums
     {
         adm = 0,
         func = 1,
-        fisio = 3,
-        secretaria = 4,
+        fisio = 2,
+        paciente = 3
     }
 }

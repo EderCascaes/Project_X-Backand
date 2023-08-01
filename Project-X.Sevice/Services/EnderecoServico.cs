@@ -4,6 +4,7 @@ using Project_X.Domain.Notifications;
 using Project_X.Interface.Domain;
 using Project_X.Interface.Repositories;
 using Project_X.Interface.Services;
+using Correios;
 
 namespace Project_X.Sevice.Services
 {
@@ -96,6 +97,33 @@ namespace Project_X.Sevice.Services
             catch (Exception ex)
             {
                 _notifications.Add(new ApiNotifications("Erro ao obter endereço : " + ex.Message));
+                return default;
+            }
+        }
+
+        public async Task<EnderecoDto> ObterEnderecoPorCep(string cep)
+        {
+            try
+            {
+                var endereco = new EnderecoDto();
+
+                var enderecos = new Correios.NET.CorreiosService().GetAddresses(cep);
+
+                foreach (var end in enderecos) 
+                {
+                    endereco.Logradouro = end.Street;
+                    endereco.Bairro = end.District;
+                    endereco.Cidade = end.City;
+                    endereco.Estado = end.State;                 
+
+                };
+
+                return  endereco;
+              
+            }
+            catch (Exception ex)
+            {
+                _notifications.Add(new ApiNotifications("Erro obter endereço  por cep: " + ex.Message));
                 return default;
             }
         }
