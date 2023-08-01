@@ -9,66 +9,66 @@ namespace Project_X.Domain.Dto
     {
         private string v;
 
-        public PessoaDto(int id, string nome, string email, string telefone, DateTime dataNascimento, string cpf, int idEndereco, List<int> funcao)
+        public PessoaDto(int id, string nome, string email, string telefone, string dataNascimento, string cpf, int idEndereco, List<int> funcao)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Telefone = telefone;
-            DataNascimento= dataNascimento.ToString("yyyy/MM/dd");
+            DataNascimento= dataNascimento.FormatarData();
             Cpf = cpf;
             IdEndereco = idEndereco;
-            Funcao = funcao;
+            Funcoes = funcao;
         }
 
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
 
-        [JsonIgnore]
-        public string _telefone { get; set; }
-        public string Telefone 
-        {
-            get
+        //[JsonIgnore]
+     //   public string _telefone { get; set; }
+        public string Telefone { get; set; }
+        /*{
+            GET
             {
-                try
+                TRY
                 {
-                    return Funcoes.AplicarMascaraTelefone(_telefone);
+                    RETURN FUNCOES.APLICARMASCARATELEFONE(_TELEFONE);
                 }
-                catch 
+                CATCH 
                 {
 
-                    return _telefone;
+                    RETURN _TELEFONE;
                 }
                 
             }
 
-           set { _telefone = value;  }         
-        }
+           SET { _TELEFONE = VALUE;  }         
+        }*/
         public string DataNascimento { get; set; }
 
-        [JsonIgnore]
-        public string? _cpf { get; set; }
-        public string Cpf
-        {
-            get
-            {
-                try
-                {
-                    return Funcoes.FormatCPF(_cpf);
-                }
-                catch 
-                {
+      /*  [JsonIgnore]
+        public string? _cpf { get; set; }*/
+        public string Cpf { get; set; }
+        /* {
+             get
+             {
+                 try
+                 {
+                     return Funcoes.FormatCPF(_cpf);
+                 }
+                 catch 
+                 {
 
-                    return _cpf;
-                }
-            }
-            set 
-            {
-                 _cpf = value;
-            }
-        }
+                     return _cpf;
+                 }
+             }
+             set 
+             {
+                  _cpf = value;
+             }
+         }*/
         public int IdEndereco { get; set; }
-        public List<int> Funcao { get; set; }
+        public List<int> Funcoes { get; set; }
     }
 }

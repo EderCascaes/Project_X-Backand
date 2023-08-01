@@ -34,7 +34,7 @@ namespace Project_X.Sevice.Services
                          DateTime.Parse(dto.DataNascimento),
                          dto.Cpf.RetornaNumeros(),
                          dto.IdEndereco,
-                         dto.Funcao
+                         dto.Funcoes
                 ));
 
                 }
@@ -68,7 +68,7 @@ namespace Project_X.Sevice.Services
                          DateTime.Parse(dto.DataNascimento),
                          dto.Cpf.RetornaNumeros(),
                          dto.IdEndereco,
-                         dto.Funcao,
+                         dto.Funcoes,
                          dto.Id
                 ));
             }
@@ -107,7 +107,7 @@ namespace Project_X.Sevice.Services
                               pessoa.Nome,
                               pessoa.Email,
                               pessoa.Telefone,
-                              pessoa.DataNascimento,
+                              pessoa.DataNascimento.ToString(),
                               pessoa.Cpf,
                               pessoa.IdEndereco,
                               pessoa.Funcao
@@ -140,7 +140,7 @@ namespace Project_X.Sevice.Services
                               pessoa.Nome,
                               pessoa.Email,
                               pessoa.Telefone,
-                              pessoa.DataNascimento,
+                              pessoa.DataNascimento.ToString(),
                               pessoa.Cpf,
                               pessoa.IdEndereco,
                               pessoa.Funcao

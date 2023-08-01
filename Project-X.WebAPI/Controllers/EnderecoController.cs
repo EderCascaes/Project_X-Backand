@@ -50,7 +50,7 @@ namespace Project_X.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("ObterEnderecoPorCeo/{cep}")]
+        [Route("ObterEnderecoPorCep/{cep}")]
         public async Task<ActionResult<ReturnAPI<EnderecoDto?>>> ObterEnderecoPorCep(string cep)
         {
             return EnviarResposta(await GetService<IEnderecoServico>().ObterEnderecoPorCep(cep));

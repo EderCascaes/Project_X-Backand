@@ -78,5 +78,14 @@ namespace Project_X.Domain.Static
 
             return string.Format(strMascara, lngNumero);
         }
+
+        public static string FormatarData(this string data)
+        {
+            var dia = data.Substring(0, 2);
+            var mes = data.Substring(2, 2);
+            var ano = data.Substring(4,4);
+
+            return ano + "/" + mes + "/" + dia;
+        }
     }
 }
