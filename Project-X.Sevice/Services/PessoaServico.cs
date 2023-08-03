@@ -125,12 +125,16 @@ namespace Project_X.Sevice.Services
             }
         }
         
-        public async Task<List<PessoaDto>> ObterPorDocOuNome(string docOuNome)
+        public async Task<List<PessoaDto>> ObterPorDocOuNome(string doc , string nome)
         {
+            doc = doc.ClearWord();
+            nome = nome.ClearWord();
+            var c = string.IsNullOrEmpty(doc) ? nome : doc;
+
             try
             {
                 var listaPessoaDto = new List<PessoaDto>();
-                var listaPessoa = await _pessoaRepositorio.ObterDocOuNome(docOuNome);
+                var listaPessoa = await _pessoaRepositorio.ObterDocOuNome(c);
 
                 if (listaPessoa.Count > 0)
                     foreach (var pessoa in listaPessoa)

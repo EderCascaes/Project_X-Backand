@@ -87,5 +87,8 @@ namespace Project_X.Domain.Static
 
             return ano + "/" + mes + "/" + dia;
         }
+
+        public static string ClearWord(this string word) => word.Replace("\\", "").Replace("\"", "").ToLower();
+        
     }
 }

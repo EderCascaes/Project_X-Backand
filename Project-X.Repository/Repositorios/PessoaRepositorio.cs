@@ -139,7 +139,7 @@ namespace Project_X.Repository.Repositorios
             var listaPessoa = new List<Pessoa>();
             if (!string.IsNullOrEmpty(docOuNome))
             {
-                listaPessoa = DbContext.Pessoa?.Where(x => x.Cpf == docOuNome || x.Nome.Contains(docOuNome))
+                listaPessoa = DbContext.Pessoa?.Where(x => x.Cpf == docOuNome || x.Nome.ToLower().Contains(docOuNome))
                     .Include(x => x.Endereco)
                     .ToList();                             
             }
