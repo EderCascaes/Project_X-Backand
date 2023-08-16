@@ -14,6 +14,6 @@ namespace Project_X.Interface.Services
         Task<int> Editar(PessoaDto dto);
         Task<int> Excluir(int id);
         Task<List<PessoaDto>> Obter(int id = 0);
-        Task<List<PessoaDto>> ObterPorDocOuNome(string? doc, string? nome);
+        Task<List<PessoaDto>> ObterPorDocOuNome(string docOunome);
     }
 }

@@ -15,7 +15,7 @@ namespace Project_X.Domain.Dto
             Nome = nome;
             Email = email;
             Telefone = telefone;
-            DataNascimento= dataNascimento.FormatarData();
+            DataNascimento= dataNascimento;
             Cpf = cpf;
             IdEndereco = idEndereco;
             Funcoes = funcao;

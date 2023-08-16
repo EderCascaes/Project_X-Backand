@@ -34,10 +34,10 @@ namespace Project_X.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{doc?}/{nome?}")]
-        public async Task<ActionResult<ReturnAPI<List<PessoaDto>?>>> ObterPorDocOuNome(string doc , string nome)
+        [Route("obterPorDocOuNome/{docOuNome}")]
+        public async Task<ActionResult<ReturnAPI<List<PessoaDto>?>>> ObterPorDocOuNome( string docOuNome)
         {
-            return EnviarResposta(await GetService<IPessoaServico>().ObterPorDocOuNome(doc, nome));
+            return EnviarResposta(await GetService<IPessoaServico>().ObterPorDocOuNome(docOuNome));
 
         }
 

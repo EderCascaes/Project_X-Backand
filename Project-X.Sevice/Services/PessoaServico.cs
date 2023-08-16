@@ -106,9 +106,9 @@ namespace Project_X.Sevice.Services
                               pessoa.Id,
                               pessoa.Nome,
                               pessoa.Email,
-                              pessoa.Telefone,
+                              pessoa.Telefone.AplicarMascaraTelefone(),
                               pessoa.DataNascimento.ToString(),
-                              pessoa.Cpf,
+                              pessoa.Cpf.FormatCPF(),
                               pessoa.IdEndereco,
                               pessoa.Funcao
                             );
@@ -125,16 +125,14 @@ namespace Project_X.Sevice.Services
             }
         }
         
-        public async Task<List<PessoaDto>> ObterPorDocOuNome(string doc , string nome)
+        public async Task<List<PessoaDto>> ObterPorDocOuNome(string docOunome)
         {
-            doc = doc.ClearWord();
-            nome = nome.ClearWord();
-            var c = string.IsNullOrEmpty(doc) ? nome : doc;
+           // docOunome = docOunome.ClearWord();           
 
             try
             {
                 var listaPessoaDto = new List<PessoaDto>();
-                var listaPessoa = await _pessoaRepositorio.ObterDocOuNome(c);
+                var listaPessoa = await _pessoaRepositorio.ObterDocOuNome(docOunome);
 
                 if (listaPessoa.Count > 0)
                     foreach (var pessoa in listaPessoa)
@@ -143,9 +141,9 @@ namespace Project_X.Sevice.Services
                               pessoa.Id,
                               pessoa.Nome,
                               pessoa.Email,
-                              pessoa.Telefone,
+                              pessoa.Telefone.AplicarMascaraTelefone(),
                               pessoa.DataNascimento.ToString(),
-                              pessoa.Cpf,
+                              pessoa.Cpf.FormatCPF(),
                               pessoa.IdEndereco,
                               pessoa.Funcao
                             );

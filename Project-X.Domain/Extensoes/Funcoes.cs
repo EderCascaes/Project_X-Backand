@@ -53,7 +53,7 @@ namespace Project_X.Domain.Static
 
         public static string RetornaNumeros(this string alvo) => alvo.Replace(".", "").Replace("-", "").Replace("/", "").Replace("(", "").Replace(")", "");
 
-        public static string FormatCPF(string CPF) => Convert.ToUInt64(CPF).ToString(@"000\.000\.000\-00");       
+        public static string FormatCPF(this string CPF) => Convert.ToUInt64(CPF).ToString(@"000\.000\.000\-00");       
 
 
 
@@ -66,7 +66,7 @@ namespace Project_X.Domain.Static
             return listaFuncooes;
         }
 
-        public static  string AplicarMascaraTelefone(string strNumero)
+        public static  string AplicarMascaraTelefone(this string strNumero)
         {
             // por omissão tem 10 ou menos dígitos
             string strMascara = "{0:(00)0000-0000}";

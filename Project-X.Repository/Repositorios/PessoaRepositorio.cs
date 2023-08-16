@@ -131,7 +131,7 @@ namespace Project_X.Repository.Repositorios
                 }
             }
 
-            return DbContext.Pessoa?.OrderBy(x => x.Nome).ToList();
+            return DbContext.Pessoa.OrderBy(x => x.Nome).ToList();
         }
 
         public async Task<List<Pessoa>> ObterDocOuNome(string docOuNome)
@@ -139,7 +139,7 @@ namespace Project_X.Repository.Repositorios
             var listaPessoa = new List<Pessoa>();
             if (!string.IsNullOrEmpty(docOuNome))
             {
-                listaPessoa = DbContext.Pessoa?.Where(x => x.Cpf == docOuNome || x.Nome.ToLower().Contains(docOuNome))
+                listaPessoa = DbContext.Pessoa?.Where(x => x.Cpf == docOuNome.RetornaNumeros() || x.Nome.ToLower().Contains(docOuNome))
                     .Include(x => x.Endereco)
                     .ToList();                             
             }
